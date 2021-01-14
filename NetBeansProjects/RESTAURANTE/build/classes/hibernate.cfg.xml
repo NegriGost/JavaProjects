@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/restaurante?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.show_sql">true</property>
+    <mapping class="Modelo.Cargo"/>
+    <mapping class="Modelo.Categoria"/>
+    <mapping class="Modelo.Clientes"/>
+    <mapping class="Modelo.Compras"/>
+    <mapping class="Modelo.Funcionarios"/>
+    <mapping class="Modelo.Itens_Produtos"/>
+    <mapping class="Modelo.Itens_Reserva"/>
+    <mapping class="Modelo.Mesas"/>
+    <mapping class="Modelo.Produtos"/>
+    <mapping class="Modelo.Reserva"/>
+    <mapping class="Modelo.Usuarios"/>
+  </session-factory>
+</hibernate-configuration>

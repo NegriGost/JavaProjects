@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ICMFaturaSemCliente" language="groovy" pageWidth="795" pageHeight="431" orientation="Landscape" columnWidth="755" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="989aacfc-f4d5-4f75-990f-7ea09654c390">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="DS" uuid="9d7760af-a05f-4931-9766-fa71cdeb70da">
+		<parameter name="codVenda" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+     produtos.`nomeProd` AS produtos_nomeProd,
+     itens_produto.`quantidade` AS itens_produto_quantidade,
+     itens_produto.`precoTotal` AS itens_produto_precoTotal,
+     pedidos.`codigoVenda` AS pedidos_codigoVenda
+FROM
+     `produtos` produtos INNER JOIN `itens_produto` itens_produto ON produtos.`codProd` = itens_produto.`Produtos`
+     INNER JOIN `pedidos` pedidos ON itens_produto.`Pedidos` = pedidos.`idPedido`
+where pedidos.`codigoVenda`=$P{codVenda}]]>
+		</queryString>
+		<field name="produtos_nomeProd" class="java.lang.String"/>
+		<field name="itens_produto_quantidade" class="java.lang.Integer"/>
+		<field name="itens_produto_precoTotal" class="java.lang.Double"/>
+		<field name="pedidos_codigoVenda" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="codVenda" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGEM" class="java.io.InputStream">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     clientes.`Nome` AS clientes_Nome,
+     pedidos.`codigoVenda` AS pedidos_codigoVenda,
+     pedidos.`data` AS pedidos_data,
+     pedidos.`estadoVenda` AS pedidos_estadoVenda,
+     pedidos.`totalPedido` AS pedidos_totalPedido,
+     funcionarios.`Nome` AS funcionarios_Nome,
+     funcionarios.`Apelido` AS funcionarios_Apelido
+FROM
+     `clientes` clientes INNER JOIN `pedidos` pedidos ON clientes.`codCliente` = pedidos.`Cliente`
+     INNER JOIN `funcionarios` funcionarios ON pedidos.`func` = funcionarios.`codFunc`
+WHERE
+     pedidos.`codigoVenda` = $P{codVenda}]]>
+	</queryString>
+	<field name="clientes_Nome" class="java.lang.String"/>
+	<field name="pedidos_codigoVenda" class="java.lang.String"/>
+	<field name="pedidos_data" class="java.sql.Timestamp"/>
+	<field name="pedidos_estadoVenda" class="java.lang.String"/>
+	<field name="pedidos_totalPedido" class="java.lang.String"/>
+	<field name="funcionarios_Nome" class="java.lang.String"/>
+	<field name="funcionarios_Apelido" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="124" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="653" y="0" width="102" height="107" uuid="1a31b367-c6b1-4d9f-936b-99354d6ec500"/>
+				<imageExpression><![CDATA[$P{IMAGEM}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="130" y="7" width="512" height="39" forecolor="#3333FF" uuid="1c762034-6887-410c-9ebe-8644d4ec4ebe"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="30"/>
+				</textElement>
+				<text><![CDATA[Restaurante Didatico I.C.M,LDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="46" width="40" height="20" uuid="84069c51-e5ac-42cc-8c0f-272c545a8785"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="68" width="127" height="24" uuid="35cb5cb9-b126-4aa8-b2b7-457d6592a17d"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data/Hora]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="130" y="52" width="512" height="55" uuid="7e88c25a-9613-432a-a36e-82df8f48cd44"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="130" y="52" width="512" height="55" uuid="b68f0ffa-80f6-445a-b501-a43abe60410e"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[Restaurante ICM, e um restaurante, que oferece serviços de Restauração aos clientes, encontra-se no museu , terminal de chapas, no interior do Instituto comercial de Maputo. contactos: 840168588-849231169]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="3" y="0" width="112" height="29" uuid="6d9e9b2e-43fa-45c6-8927-7bee089e7c6d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="0" width="112" height="29" uuid="d20fe2a9-8213-44ac-ab22-31a91f1c200d"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACTURA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="92" width="130" height="23" uuid="a81fc590-771c-498a-9c91-a792f3baa25d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_data}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="43" y="46" width="100" height="22" uuid="a3e45e3f-7309-4e18-b4f4-7e4fb0da037b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_codigoVenda}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="140" splitType="Stretch">
+			<staticText>
+				<reportElement x="551" y="11" width="67" height="24" uuid="de7e1df8-4ecb-430f-a2a3-86a73450ab5f"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mesa:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="616" y="34" width="121" height="1" uuid="696dba62-caaf-44f4-9dd6-4a35c707049a"/>
+			</line>
+			<staticText>
+				<reportElement x="288" y="15" width="67" height="24" uuid="06e3d945-bc28-476d-bbe8-558d9189935c"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="355" y="34" width="121" height="1" uuid="a19b9dc4-c69b-43d6-8bf8-b353302f4293"/>
+			</line>
+			<staticText>
+				<reportElement x="17" y="15" width="67" height="24" uuid="f3ffa944-26dd-42b0-9eb5-196f00fd2d89"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="84" y="33" width="116" height="1" uuid="3c5c3ebd-022e-4847-b8aa-284d60136bf7"/>
+			</line>
+			<componentElement>
+				<reportElement key="table" style="table" x="17" y="49" width="720" height="80" uuid="760f8d34-af2f-492b-b83a-ac9bc3e02704"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DS" uuid="ebe8870b-cfc1-4254-8848-92a67d596f33">
+						<datasetParameter name="codVenda">
+							<datasetParameterExpression><![CDATA[$F{pedidos_codigoVenda}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="e77e123c-6747-4154-8355-04512c56b2aa">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="bad92393-6950-4ed1-b039-0d4e4edcdd6a"/>
+								<textElement>
+									<font fontName="DejaVu Serif" size="18" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Qtd]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="5f5d5eee-137c-4f75-b2a6-16b40e77802d"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{itens_produto_quantidade}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="541" uuid="3c9a5b1d-89f6-4d75-8917-a4db5890115b">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="541" height="30" uuid="2f4f57e8-77e0-465c-a5e8-99c5d477e2b5"/>
+								<textElement textAlignment="Center">
+									<font fontName="DejaVu Serif" size="18" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Descrição]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="541" height="20" uuid="e67f7e91-55f0-4589-b877-46a97f717221"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{produtos_nomeProd}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="0d0fcdac-ec41-4b79-8869-bbb06a39884b">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="ddfef776-decf-430b-a479-e802df716938"/>
+								<textElement>
+									<font fontName="DejaVu Serif" size="18" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="a3d3ad04-2ec5-4e06-98fa-3d8ed3aa7f78"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{itens_produto_precoTotal}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="619" y="14" width="118" height="25" uuid="d6357485-90ce-428a-8282-a0aee9195523"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Sem Descrição]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="84" y="15" width="116" height="24" uuid="24dcf872-258f-4714-83eb-9644433c0442"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_Nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="14" width="121" height="25" uuid="aaefddfd-d594-4e91-a36d-dc1604accfca"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_estadoVenda}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="471" y="0" width="147" height="32" uuid="48c66555-4fcf-4c75-88b1-f71de25d4385"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Pago:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="619" y="0" width="136" height="32" forecolor="#0099CC" uuid="d0891e7d-b08e-4dd4-8d81-1ecca01d8efe"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_totalPedido}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="97" height="32" uuid="cbbd54ab-b849-4739-89ab-58c432503e6e"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="16"/>
+				</textElement>
+				<text><![CDATA[Vendedor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="97" y="1" width="103" height="19" uuid="0d2a135b-530a-4019-b8b7-e12de1e97da9"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_Nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="1" width="127" height="19" uuid="29400c05-839d-43b1-bb36-3b3653660a3d"/>
+				<textElement textAlignment="Justified">
+					<font fontName="DejaVu Serif" size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_Apelido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

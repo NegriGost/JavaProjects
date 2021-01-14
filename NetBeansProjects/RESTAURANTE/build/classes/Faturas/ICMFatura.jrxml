@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ICMFatura" language="groovy" pageWidth="795" pageHeight="431" orientation="Landscape" columnWidth="755" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b402298d-d9dc-4808-bd53-a8cbc0d422a0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#808080">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#A9A9A9">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#999999"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#999999"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#999999"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#999999"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="DS" uuid="02bbe344-5f85-474d-bdbf-e9fc26013a71">
+		<parameter name="codVenda" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+     produtos.`nomeProd` AS produtos_nomeProd,
+     itens_produto.`quantidade` AS itens_produto_quantidade,
+     itens_produto.`precoTotal` AS itens_produto_precoTotal,
+     pedidos.`codigoVenda` AS pedidos_codigoVenda
+FROM
+     `produtos` produtos INNER JOIN `itens_produto` itens_produto ON produtos.`codProd` = itens_produto.`Produtos`
+     INNER JOIN `pedidos` pedidos ON itens_produto.`Pedidos` = pedidos.`idPedido`
+where pedidos.`codigoVenda`=$P{codVenda}]]>
+		</queryString>
+		<field name="produtos_nomeProd" class="java.lang.String"/>
+		<field name="itens_produto_quantidade" class="java.lang.Integer"/>
+		<field name="itens_produto_precoTotal" class="java.lang.Double"/>
+		<field name="pedidos_codigoVenda" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="codVenda" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGEM" class="java.io.InputStream">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     clientes.`Nome` AS clientes_Nome,
+     pedidos.`data` AS pedidos_data,
+     pedidos.`totalPedido` AS pedidos_totalPedido,
+     pedidos.`estadoVenda` AS pedidos_estadoVenda,
+     pedidos.`codigoVenda` AS pedidos_codigoVenda,
+     mesas.`nomeMesa` AS mesas_nomeMesa,
+     funcionarios.`Nome` AS funcionarios_Nome,
+     funcionarios.`Apelido` AS funcionarios_Apelido
+FROM
+     `clientes` clientes INNER JOIN `pedidos` pedidos ON clientes.`codCliente` = pedidos.`Cliente`
+     INNER JOIN `mesas` mesas ON pedidos.`Mesas` = mesas.`codMesa`
+     INNER JOIN `funcionarios` funcionarios ON pedidos.`func` = funcionarios.`codFunc`
+WHERE
+     pedidos.`codigoVenda` = $P{codVenda}]]>
+	</queryString>
+	<field name="clientes_Nome" class="java.lang.String"/>
+	<field name="pedidos_data" class="java.sql.Timestamp"/>
+	<field name="pedidos_totalPedido" class="java.lang.String"/>
+	<field name="pedidos_estadoVenda" class="java.lang.String"/>
+	<field name="pedidos_codigoVenda" class="java.lang.String"/>
+	<field name="mesas_nomeMesa" class="java.lang.String"/>
+	<field name="funcionarios_Nome" class="java.lang.String"/>
+	<field name="funcionarios_Apelido" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="130" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="653" y="0" width="102" height="115" uuid="1efb9495-519c-4927-8793-36c3a5fe1145"/>
+				<imageExpression><![CDATA[$P{IMAGEM}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="141" y="10" width="512" height="35" forecolor="#3333FF" uuid="6359c32e-2593-4d91-be7a-333157ede1a7"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="30"/>
+				</textElement>
+				<text><![CDATA[Restaurante Didatico I.C.M,LDA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="1" y="0" width="103" height="29" uuid="11e79c2a-3345-4485-acaf-ea8506fe6f86"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="0" width="103" height="29" uuid="548194fa-e67c-44cc-bf05-faf9f87532c3"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Serif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACTURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="45" width="40" height="20" uuid="3113447f-5bd0-4e0b-b0bc-0f041a2050f6"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="65" width="139" height="24" uuid="f4095ee2-9308-45b8-96bc-e63dadddc75a"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data/Hora]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="141" y="57" width="503" height="58" uuid="675feb59-4874-40e8-b606-e9f97ee98b17"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="141" y="57" width="502" height="58" uuid="baa676c0-0321-4e57-82e2-6b3b9a856eb5"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[Restaurante ICM, e um restaurante, que oferece serviços de Restauração aos clientes, encontra-se no museu , terminal de chapas, no interior do Instituto comercial de Maputo. contactos: 840168588-849231169]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="4" y="89" width="136" height="26" uuid="ed61c6cb-4272-45ea-88c7-48cf5d34c7f0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_data}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="45" width="100" height="20" uuid="76829c67-d259-4a00-b0a0-f327987f60ea"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_codigoVenda}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="134" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="14" width="67" height="24" uuid="3093f7ec-8c3d-4976-8432-80a85ea60bf3"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="82" y="37" width="181" height="1" uuid="b780b532-4966-446f-9d9d-1dca93ea3ab4"/>
+			</line>
+			<staticText>
+				<reportElement x="301" y="14" width="67" height="24" uuid="3c069e41-36c9-4d23-8739-9cd81087a3aa"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="368" y="34" width="121" height="1" uuid="b9d84281-6458-4534-9d0e-86e2a35d1083"/>
+			</line>
+			<staticText>
+				<reportElement x="553" y="14" width="67" height="24" uuid="b2c63cd8-faf1-4f4f-802c-c5c71a050e7d"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mesa:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="620" y="35" width="121" height="1" uuid="51ab6a34-bbac-4c6a-8593-8b306bbe21d0"/>
+			</line>
+			<componentElement>
+				<reportElement key="table 9" style="table 9" x="15" y="48" width="733" height="80" uuid="c491f073-723f-4108-92e2-126a31aef1cc"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DS" uuid="2c29bead-8d70-4a4d-a138-a9849d4c6d60">
+						<datasetParameter name="codVenda">
+							<datasetParameterExpression><![CDATA[$F{pedidos_codigoVenda}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="533970ec-3436-49af-bd39-ef9a55182bd4">
+						<jr:columnHeader style="table 9_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="623f6f3d-a905-466a-9351-00ed8da997e8"/>
+								<textElement>
+									<font fontName="DejaVu Serif" size="18" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Qtd]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 9_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 9_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="b88c8fd6-8938-4e4c-a4ab-30f54807cdd5"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{itens_produto_quantidade}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="554" uuid="8741281b-6d4c-414c-ae88-88ffdd83af23">
+						<jr:columnHeader style="table 9_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="554" height="30" uuid="a0e6520c-027a-4eaa-a8a1-73fb55f10e00"/>
+								<textElement textAlignment="Center">
+									<font fontName="DejaVu Serif" size="18" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Descrição]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 9_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 9_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="554" height="20" uuid="d9491d6e-cbe7-4502-9c6e-a602bbb89998"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{produtos_nomeProd}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="7dc891dd-6c45-4e69-a08f-285adc8531f4">
+						<jr:columnHeader style="table 9_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="1a5ac9a1-6950-434d-8d7b-79ffabe2a790"/>
+								<textElement>
+									<font fontName="DejaVu Serif" size="18" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 9_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 9_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="76923fc8-b381-4f0e-bc74-a8544111f22f"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{itens_produto_precoTotal}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<textField>
+				<reportElement x="620" y="14" width="100" height="24" uuid="000d3515-71fc-4333-9467-5c4d1ee9d2db"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mesas_nomeMesa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="14" width="181" height="24" uuid="9d371325-b6b1-4cb3-bea5-650b7728131d"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_Nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="14" width="121" height="24" uuid="62587a91-75b7-4e33-9111-1fd1dbbbadda"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_estadoVenda}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="487" y="0" width="166" height="32" uuid="5dc09afa-518d-4b39-809e-c96991e95aec"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Pago:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="620" y="0" width="128" height="32" forecolor="#0066CC" uuid="64fed8bd-50eb-401a-8d64-7383bb6bcf56"/>
+				<textElement>
+					<font fontName="SansSerif" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_totalPedido}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="94" height="32" uuid="e55216c9-e56f-4bd5-b164-0066f0bbc034"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="16"/>
+				</textElement>
+				<text><![CDATA[Vendedor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="94" y="0" width="94" height="21" uuid="bda0c12e-d939-49de-93ec-47ecef3e91ef"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_Nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="0" width="148" height="21" uuid="37a3c7c5-e474-4d6a-957f-c7cf2e98df94"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_Apelido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

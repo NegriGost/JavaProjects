@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RProd" language="groovy" pageWidth="792" pageHeight="792" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="acf6e0c2-21ca-46a7-b7cd-7c758b81306d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#4682B4">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE2FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#4682B4">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE2FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="DS" uuid="5119235f-3d15-4b59-9f0c-bc829b04508c">
+		<parameter name="data" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT
+    produtos.nomeProd as Descrição,
+    produtoscategoria.nomeCategoria as Categoria,
+    SUM(quantidade) as qtd,
+    SUM(precoTotal) as Total,
+    date_format(pedidos.data,'%d/%m/%Y') as Datta
+FROM itens_produto
+    INNER JOIN produtos ON produtos.codProd=itens_produto.Produtos
+	INNER JOIN pedidos ON pedidos.idPedido=itens_produto.Pedidos
+    INNER JOIN produtoscategoria ON produtoscategoria.codCateg=produtos.produtoCategoria
+GROUP BY Datta,Descrição
+HAVING Datta=$P{data}
+ORDER BY qtd desc]]>
+		</queryString>
+		<field name="Descrição" class="java.lang.String"/>
+		<field name="Categoria" class="java.lang.String"/>
+		<field name="qtd" class="java.math.BigDecimal"/>
+		<field name="Total" class="java.lang.Double"/>
+		<field name="Datta" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="DK" uuid="36261244-d8c1-42f2-b5ad-8c2ad8181e28">
+		<parameter name="data" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT
+    produtoscategoria.nomeCategoria as Categoria,
+    SUM(quantidade) as Qtd,
+    SUM(precoTotal) as Total,
+    date_format(pedidos.data,'%d/%m/%Y') as Datta
+FROM itens_produto
+    INNER JOIN produtos ON produtos.codProd=itens_produto.Produtos
+    INNER JOIN produtoscategoria ON produtos.produtoCategoria=produtoscategoria.codCateg
+    INNER JOIN pedidos ON pedidos.idPedido=itens_produto.Pedidos
+GROUP BY Categoria,Datta
+HAVING Datta=$P{data}
+ORDER BY Qtd DESC;]]>
+		</queryString>
+		<field name="Categoria" class="java.lang.String"/>
+		<field name="Qtd" class="java.math.BigDecimal"/>
+		<field name="Total" class="java.lang.Double"/>
+		<field name="Datta" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="data" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Image" class="java.io.InputStream">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+   	 Round(sum(precoTotal),2) as TotalVendido,
+   	 date_format(pedidos.data,'%d/%m/%Y') as Datta
+FROM itens_produto
+   	 INNER JOIN pedidos ON pedidos.idPedido=itens_produto.Pedidos
+    GROUP BY Datta
+   	 HAVING Datta=$P{data}]]>
+	</queryString>
+	<field name="TotalVendido" class="java.lang.Double"/>
+	<field name="Datta" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="752" height="75" backcolor="#0099FF" uuid="0d5c996a-188d-4a9c-baf0-618382b8b475"/>
+			</rectangle>
+			<image scaleImage="FillFrame">
+				<reportElement x="654" y="0" width="98" height="75" uuid="7973168b-e367-48ac-85ed-1762fc5efa1a"/>
+				<imageExpression><![CDATA[$P{Image}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="41" y="20" width="568" height="45" forecolor="#FFFFFF" uuid="8b2faaf2-eb55-4495-b788-8bd44d60abf2"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Serif" size="32"/>
+				</textElement>
+				<text><![CDATA[Relatório Diário de Produtos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="155" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="75" width="433" height="80" uuid="0ec3a88f-9ef3-423a-935a-f70e11005339"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DS" uuid="7b7db6d8-6f66-44ce-a7b2-dda91d348e15">
+						<datasetParameter name="data">
+							<datasetParameterExpression><![CDATA[$F{Datta}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="153" uuid="cb092d68-7ed9-4b54-831d-6fe003c0e7c2">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="153" height="30" uuid="07a09f5f-d53b-4724-97ef-67054f6b3a21"/>
+								<textElement textAlignment="Center">
+									<font fontName="Times New Roman" size="16" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Descrição]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="31" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="22" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="153" height="20" uuid="3c38a524-d2ff-4981-b45f-49cdc60a8286"/>
+								<textElement>
+									<font fontName="Times New Roman" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{Descrição}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="125" uuid="76b9849d-7a11-44ca-ada8-08c8b76cba63">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="125" height="30" uuid="0798cb07-76c2-4506-8666-d80490fce4b6"/>
+								<textElement textAlignment="Center">
+									<font fontName="Times New Roman" size="16" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Categoria]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="31" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="22" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="125" height="20" uuid="94f38a9b-26c7-4b27-b0b1-1fce90fd2377"/>
+								<textElement textAlignment="Center">
+									<font fontName="Times New Roman" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{Categoria}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="67" uuid="355a0daf-038f-4eac-89c4-6d08c82480b0">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="67" height="30" uuid="fad60f18-74e7-4e42-bfb7-8a72384f19db"/>
+								<textElement textAlignment="Center">
+									<font fontName="Times New Roman" size="16" isBold="true"/>
+								</textElement>
+								<text><![CDATA[qtd]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="31" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="22" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="67" height="20" uuid="93544ebf-a615-4583-8ba7-c27724b58ab2"/>
+								<textElement textAlignment="Center">
+									<font fontName="Times New Roman" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{qtd}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="5ae0912d-8567-429e-8b51-75f1005d02d5">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="5ce6d1be-d9ff-40e5-b9dd-8e9fbb72050c"/>
+								<textElement textAlignment="Center">
+									<font fontName="Times New Roman" size="16" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="31" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="22" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="8bc8d390-d6b2-4edb-a513-2034abaf4ab3"/>
+								<textElement textAlignment="Center">
+									<font fontName="Times New Roman" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="453" y="75" width="299" height="80" uuid="3cef91c2-d73c-428b-bf7e-df26ab154210"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DK" uuid="4365d0a7-72a0-47ad-897e-b5c901f358b9">
+						<datasetParameter name="data">
+							<datasetParameterExpression><![CDATA[$F{Datta}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="130" uuid="e62e4c12-2a21-4667-98a4-5a9e4d5df56e">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="130" height="30" uuid="c7c5001a-a933-4c2c-8a91-44bc9115d58a"/>
+								<textElement textAlignment="Center">
+									<font fontName="Times New Roman" size="16" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Categoria]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="130" height="20" uuid="bc86fb73-ce04-467a-adab-6452f212ec59"/>
+								<textElement>
+									<font fontName="Times New Roman" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{Categoria}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="81" uuid="c4ef4573-2da1-4569-b17a-409aaec6765a">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="81" height="30" uuid="0a81d654-0df4-4ea4-ad01-9b8db24e72f0"/>
+								<textElement textAlignment="Center">
+									<font fontName="Times New Roman" size="16" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Qtd]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="81" height="20" uuid="7dfc1e13-fa4b-4d18-b98e-4378a591f533"/>
+								<textElement textAlignment="Center">
+									<font fontName="Times New Roman" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{Qtd}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="ed40ec5d-63fb-4ea9-8093-8c6feb27b8fc">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="8112d4cf-0a41-4632-8c71-ccf548461521"/>
+								<textElement textAlignment="Center">
+									<font fontName="Times New Roman" size="16" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="fbce193e-4ce5-4976-b59b-8156d1f3373f"/>
+								<textElement textAlignment="Center">
+									<font fontName="Times New Roman" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<rectangle>
+				<reportElement x="0" y="0" width="654" height="41" uuid="db32ea0e-fed5-4bdf-81c9-4a7bf2f9c926"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="11" width="108" height="20" uuid="05948e34-08e3-4568-aa25-4ddf276c70ef"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data da Venda:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="118" y="11" width="100" height="20" uuid="aed6149a-fd5d-4449-9d06-8b544c26a365"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Datta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="397" y="11" width="108" height="20" uuid="2a45c1fe-0d12-4eb3-85c3-dfeecfefba62"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Vendido:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="544" y="11" width="110" height="20" forecolor="#0066FF" uuid="ae2557aa-e04a-4512-a573-aa3cf89cbd5a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TotalVendido}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="218" y="11" width="92" height="20" uuid="0a3a5eb8-b6b2-4987-83b1-7b553e7cdeb9"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Actual:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="307" y="11" width="100" height="20" uuid="9a16da97-56eb-4999-a372-c82191bc83f5"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="505" y="11" width="39" height="20" forecolor="#0099FF" uuid="8ca078fc-fcbc-42e0-b5b8-d854cd14d124"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MZN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="54" width="433" height="21" forecolor="#000000" uuid="390d4574-fa33-429c-8664-b3b146835141"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[1. Produtos do mais Vendido ao Menus Vendido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="54" width="297" height="21" forecolor="#000000" uuid="e15bf637-6e9f-43db-98da-bf277b3fd8e0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[2. Categorias mais vendidas a menus vendidos]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="28">
+			<textField>
+				<reportElement x="621" y="0" width="91" height="28" uuid="1385207d-2d32-45a8-9f03-20e4b79b0d56"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="712" y="0" width="40" height="28" uuid="367619c1-3059-4944-9f37-e52c7a26ae52"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

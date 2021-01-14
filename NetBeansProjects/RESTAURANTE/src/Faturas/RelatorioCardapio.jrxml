@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioCardapio" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="767b8270-4cf0-4e4a-b2aa-0abecb5823cb">
+	<property name="template.type" value="columnar"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<scriptlet name="scriptlet1" class="net.sf.jasperreports.engine.JRDefaultScriptlet"/>
+	<parameter name="IMAGEM" class="java.io.InputStream">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     produtos.`Foto` AS produtos_Foto,
+     produtos.`Preco` AS produtos_Preco,
+     produtos.`nomeProd` AS produtos_nomeProd,
+     produtoscategoria.`nomeCategoria` AS produtoscategoria_nomeCategoria,
+     produtos.`codProd` AS produtos_codProd
+FROM
+     `produtoscategoria` produtoscategoria INNER JOIN `produtos` produtos ON produtoscategoria.`codCateg` = produtos.`produtoCategoria`]]>
+	</queryString>
+	<field name="produtos_Foto" class="java.lang.String"/>
+	<field name="produtos_Preco" class="java.lang.Double"/>
+	<field name="produtos_nomeProd" class="java.lang.String"/>
+	<field name="produtoscategoria_nomeCategoria" class="java.lang.String"/>
+	<field name="produtos_codProd" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="439" height="104" forecolor="#3333FF" uuid="c1f87e6d-e983-48a9-80a7-a0120b667820"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="76" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cardápio]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="439" y="0" width="116" height="104" uuid="3cf74df4-c355-43c2-af14-a2209507a5da"/>
+				<imageExpression><![CDATA[$P{IMAGEM}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="104" width="555" height="1" uuid="58356c24-928b-423b-adcb-cea38db4c686"/>
+			</line>
+			<staticText>
+				<reportElement x="281" y="84" width="154" height="20" uuid="2704eeb4-9958-409e-bc19-f96dcd0ae55a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<text><![CDATA[Restaurante Didático ICM]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="135" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="132" width="555" height="1" uuid="dfb0e9d2-1f2d-4288-9388-8daf7a7a265e"/>
+			</line>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="155" y="38" width="136" height="24" forecolor="#000000" uuid="1d5931f7-8dcc-42b4-9f3d-7673d4c4af1a"/>
+				<textElement textAlignment="Right">
+					<font size="18" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nome do Produto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="244" y="95" width="47" height="27" forecolor="#000000" uuid="7b54bb75-0d73-4133-b68c-737e38a2d193"/>
+				<textElement textAlignment="Right">
+					<font size="18" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Preço:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="304" y="95" width="251" height="27" uuid="91605011-9f7c-4f9f-aa22-b77acb40b3b3"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{produtos_Preco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="38" width="249" height="30" uuid="6d0587a4-fcbe-4286-894b-8720170bd190"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{produtos_nomeProd}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="149" height="122" uuid="bf36c6ee-f1ce-4413-84e2-ef99d554a885"/>
+				<imageExpression><![CDATA[$F{produtos_Foto}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="155" y="68" width="149" height="27" uuid="03f9240e-0c43-4c79-981a-b40b2b051464"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="18"/>
+				</textElement>
+				<text><![CDATA[Tipo de Produto:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="304" y="68" width="247" height="27" uuid="d6db6365-2d96-44ec-97a7-a047aa7527e5"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{produtoscategoria_nomeCategoria}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="155" y="12" width="136" height="26" uuid="7c1dbf97-ea8c-4526-8290-46a2bbfd73e1"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="18"/>
+				</textElement>
+				<text><![CDATA[Serial ID:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="304" y="12" width="150" height="26" uuid="48ec00ac-d4a0-4787-bdd0-06a927b5bb34"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{produtos_codProd}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
